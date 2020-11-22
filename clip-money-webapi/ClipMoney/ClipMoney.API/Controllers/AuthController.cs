@@ -21,6 +21,8 @@ namespace ClipMoney.API.Controllers
             _userBussinessLogic = userBussinessLogic;
         }
 
+
+
         [HttpPost("signon")]
         public IActionResult Post(UserCredentialsModel model)
         {
