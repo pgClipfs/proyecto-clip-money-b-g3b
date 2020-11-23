@@ -70,6 +70,7 @@ namespace ClipMoney.Domain.Repositories
                 userDb.nombre_usuario = newUser.Nombre;
                 userDb.hashed_password = newUser.HashedContraseña;
                 userDb.salt = newUser.Salt;
+                userDb.password = newUser.Contraseña;
 
                 _context.Usuarios.Add(userDb);
 

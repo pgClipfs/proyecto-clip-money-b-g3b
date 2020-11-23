@@ -1,0 +1,28 @@
+<div class="contenedor-registro m-5">
+    <div class="container">
+        <form [formGroup]="signInForm">
+            <div id="legend" class="col-12">
+                <h1 class="text-center mb-3">Registrate en ClipMoney</h1>
+            </div>
+            <div class="col-3">
+                <!-- Username -->
+                <label class="control-label" for="username">Usuario</label>
+                <input type="text" class="form-control" [formControl]="signInForm.controls.name" placeholder="Ingrese su nombre de usuario">
+            </div>
+
+            <div class="col-3">
+                <!-- Password-->
+                <label class="" for="password">Contraseña</label>
+                <input type="text" class="form-control" [formControl]="signInForm.controls.password" placeholder="Ingrese su nombre de usuario">
+            </div>
+
+            <div class="col-12">
+                <!-- Button -->
+                <button type="button" class="btn btn-secondary form-control w-25 mt-3" (click)="signIn()">Aceptar</button>
+            </div>
+        </form>
+        <div class="col-12">
+            <a href="/login">¿Ya tenes una cuenta? Inicia sesion aca!</a>
+        </div>
+    </div>
+</div>

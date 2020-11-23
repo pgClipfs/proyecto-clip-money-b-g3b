@@ -1,0 +1,18 @@
+<div class="container">
+    <form class="form-signin" [formGroup]="signOnForm">
+        <div class="col-12 m-auto text-center">
+            <img class="mb-4" src="../../../assets/images/login.png" alt="" width="72" height="72">
+        </div>
+        <h1 class="h3 mb-3 font-weight-normal">Inicia Sesion</h1>
+        <label for="inputEmail" class="sr-only">Usuario</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" [formControl]="signOnForm.controls.name">
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" [formControl]="signOnForm.controls.password">
+        <div class="checkbox mb-3">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="loginUser()">Iniciar sesion</button>
+    </form>
+    <div class="col-12">
+        <a href="/register">¿No tenes cuenta? Registrate aca!</a>
+    </div>
+</div>
