@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { LastMovementsComponent } from './components/last-movements/last-movements.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TransfersComponent } from './components/transfers/transfers.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LastMovementsComponent,
+    NavbarComponent,
+    TransfersComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
