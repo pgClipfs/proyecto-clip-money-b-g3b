@@ -1,1 +1,40 @@
-<p>home works!</p>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de Sesión Virtual Wallet</title>
+    
+        <link rel="stylesheet" href="../../../assets/style/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    </head>
+
+    <body id="background1">
+        <div class="container">
+            <form class="form-signin" [formGroup]="signOnForm">
+                <div class="col-12 m-auto text-center">
+                    <img class="mb-4" src="../../../assets/images/bcoin.png" alt="" width="360" height="360">
+                </div>
+                <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+                <div class="form-group">
+                    <label for="inputEmail" class="sr-only">E-mail</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" [formControl]="signOnForm.controls.name" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                </div>
+                <div class="from-group">
+                    <label for="inputPassword" class="sr-only">Contraseña</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" [formControl]="signOnForm.controls.password">
+                    <div class="checkbox mb-3">
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="loginUser()">Iniciar sesion</button>
+            </form>
+            <div class="col-12">
+                <a href="../register/register.component.html">¿No tenes cuenta? ¡Regístrate haciendo click acá!</a>
+            </div>
+        </div>
+    </body>
+
+</html>
