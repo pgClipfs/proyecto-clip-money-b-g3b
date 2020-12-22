@@ -1,1 +1,36 @@
-<p>last-movements works!</p>
+<div class="container">
+
+  <h3 class="mt-2">Ultimos Movimientos</h3>
+
+  <div class="ml-4 mb-4">
+    <div class="input-group" *ngIf="lastMovements.length > 0">
+      <button type="button" class="btn btn-success ml-4 mr-2">Mostrar por moneda</button>
+      <select class="form-select">
+        <option selected>Pesos Argentinos ($)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mr-5 ml-5 mt-2" *ngIf="lastMovements.length > 0">
+    <table class="table table-striped">
+      <thead class="app-head">
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tipo de movimiento</th>
+          <th scope="col">Monto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movement of lastMovements">
+          <th scope="row">{{movement.fecha | date:'shortDate'}}</th>
+          <td>{{movement.TipoDeTransaccion.nombre}}</td>
+          <td [ngClass]="{'app-debe':(movement.TipoDeTransaccion.id == 1 || movement.TipoDeTransaccion.id == 3),'app-haber': movement.TipoDeTransaccion.id == 2}">{{  ((movement.TipoDeTransaccion.id == 1 || movement.TipoDeTransaccion.id == 3) ? '-' : '') + (movement.monto |currency) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-danger mt-5" *ngIf="showError" role="alert">
+    Se produjo un error al conectar con la  con nuestros servidores, por favor intentelo de nuevo mas tarde.
+  </div>
+</div>

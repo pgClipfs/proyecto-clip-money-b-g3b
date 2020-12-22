@@ -1,0 +1,103 @@
+{
+  "data": [
+    {
+      "id":11,
+      "fecha": "2020-12-20",
+      "TipoDeTransaccion": {
+        "id": 2,
+        "nombre": "Deposito"
+      },
+      "monto": 1000
+    },
+    {
+      "id":10,
+      "fecha": "2020-12-20",
+      "TipoDeTransaccion": {
+        "id": 3,
+        "nombre": "Extraccion"
+      },
+      "monto": 2500
+    },
+    {
+      "id":9,
+      "fecha": "2020-12-19",
+      "TipoDeTransaccion": {
+        "id": 1,
+        "nombre": "Pago de impuestos"
+      },
+      "monto": 1002.10
+    },
+    {
+      "id":8,
+      "fecha": "2020-12-19",
+      "TipoDeTransaccion": {
+        "id": 1,
+        "nombre": "Pago de impuestos"
+      },
+      "monto": 975.45
+    },
+    {
+      "id":7,
+      "fecha": "2020-12-18",
+      "TipoDeTransaccion": {
+        "id": 2,
+        "nombre": "Deposito"
+      },
+      "monto": 2000
+    },
+    {
+      "id":6,
+      "fecha": "2020-12-18",
+      "TipoDeTransaccion": {
+        "id": 2,
+        "nombre": "Deposito"
+      },
+      "monto": 6000
+    },
+    {
+      "id":5,
+      "fecha": "2020-12-17",
+      "TipoDeTransaccion": {
+        "id": 1,
+        "nombre": "Pago de impuestos"
+      },
+      "monto": 2275.45
+    },
+    {
+      "id":4,
+      "fecha": "2020-12-12",
+      "TipoDeTransaccion": {
+        "id": 3,
+        "nombre": "extraccion"
+      },
+      "monto": 2000
+    },
+    {
+      "id":3,
+      "fecha": "2020-12-11",
+      "TipoDeTransaccion": {
+        "id": 3,
+        "nombre": "extraccion"
+      },
+      "monto": 1000
+    },
+    {
+      "id":2,
+      "fecha": "2020-12-11",
+      "TipoDeTransaccion": {
+        "id": 2,
+        "nombre": "Deposito"
+      },
+      "monto": 7000
+    },
+    {
+      "id":1,
+      "fecha": "2020-12-10",
+      "TipoDeTransaccion": {
+        "id": 1,
+        "nombre": "Pago de impuestos"
+      },
+      "monto": 2000
+    }
+  ]
+}

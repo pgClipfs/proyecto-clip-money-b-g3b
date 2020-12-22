@@ -1,40 +1,41 @@
-<html lang="es">
+<div class="mt-5 container">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio de Sesión Virtual Wallet</title>
-    
-        <link rel="stylesheet" href="../../../assets/style/style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
-    </head>
+  <div class="jumbotron">
+    <h1 class="display-4">¡Bienvenido a ClipMoney!</h1>
+    <h4>La nueva billetera digital...</h4>
+    <p class="lead">Nos complace darte la bienvenida a esta nueva aplicación de billetera digital, la cual tiene el fin de facilitarles a nuestros usuarios el pago y administración de su dinero de una forma más fácil y divertida.</p>
+    <hr class="my-4">
+    <p>Visita nuestra pestaña de “Últimos Movimientos”, para estar siempre infromado de lo que pasa con tu cuenta.</p>
+    <p class="lead">
+      <a class="btn btn-primary" [routerLink]="['/lastMovements']" role="button">Últimos Movimientos</a>
+    </p>
+    <hr class="my-4">
+    <p>¿3 A.M. y necesitas hacer una trasferencia? ¡No hay problema! Unos simples clicks y problema resuelto.</p>
+    <p class="lead">
+      <a class="btn btn-primary" [routerLink]="['/transfers']" role="button">Transferir</a>
+    </p>
+  </div>
+</div>
 
-    <body id="background1">
-        <div class="container">
-            <form class="form-signin" [formGroup]="signOnForm">
-                <div class="col-12 m-auto text-center">
-                    <img class="mb-4" src="../../../assets/images/bcoin.png" alt="" width="360" height="360">
-                </div>
-                <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
-                <div class="form-group">
-                    <label for="inputEmail" class="sr-only">E-mail</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" [formControl]="signOnForm.controls.name" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
-                </div>
-                <div class="from-group">
-                    <label for="inputPassword" class="sr-only">Contraseña</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" [formControl]="signOnForm.controls.password">
-                    <div class="checkbox mb-3">
-                    </div>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="loginUser()">Iniciar sesion</button>
-            </form>
-            <div class="col-12">
-                <a href="../register/register.component.html">¿No tenes cuenta? ¡Regístrate haciendo click acá!</a>
-            </div>
-        </div>
-    </body>
-
-</html>
+<!-- <div class="container">
+  <form class="form-signin" [formGroup]="signOnForm">
+      <div class="col-12 m-auto text-center">
+          <img class="mb-4" src="../../../assets/images/bcoin.png" alt="" width="360" height="360">
+      </div>
+      <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+      <div class="form-group">
+          <label for="inputEmail" class="sr-only">E-mail</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" [formControl]="signOnForm.controls.name" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+      </div>
+      <div class="from-group">
+          <label for="inputPassword" class="sr-only">Contraseña</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" [formControl]="signOnForm.controls.password">
+          <div class="checkbox mb-3">
+          </div>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="loginUser()">Iniciar sesion</button>
+  </form>
+  <div class="col-12">
+      <a href="../register/register.component.html">¿No tenes cuenta? ¡Regístrate haciendo click acá!</a>
+  </div>
+</div> -->

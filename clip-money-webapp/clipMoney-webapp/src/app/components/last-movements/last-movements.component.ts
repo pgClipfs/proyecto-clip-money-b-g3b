@@ -1,4 +1,16 @@
+import { MovementsService } from './../../services/movements.service';
 import { Component, OnInit } from '@angular/core';
+
+
+interface Movements {
+  id: number;
+  fecha: Date;
+  monto: number;
+  TipoDeTransaccion: {
+    id: number;
+    nombre: string;
+  };
+}
 
 @Component({
   selector: 'app-last-movements',
@@ -7,9 +19,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LastMovementsComponent implements OnInit {
 
-  constructor() { }
+  showError = false;
+
+  lastMovements: Movements[] = [];
+
+  constructor(private movemenetsService: MovementsService) { }
 
   ngOnInit(): void {
+    this.movemenetsService.getLastMovoments().subscribe((response) => {
+      this.showError = false;
+      this.lastMovements = response.data as Movements[];
+    }, error => {
+      this.showError = true;
+    });
   }
-
 }
