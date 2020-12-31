@@ -4,6 +4,8 @@ using ClipMoney.Persistence.EntityFramework.context;
 using System.Linq;
 using System;
 using ClipMoney.Persistence.EntityFramework.entities;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClipMoney.Domain.Repositories
 {
@@ -33,10 +35,10 @@ namespace ClipMoney.Domain.Repositories
         }
 
         //obtiene de la base de datos el usuario con su nombre y el salt
-        public UserSaltModel GetByUserSaltName(string name)
+        public async Task<UserSaltModel> GetByUserSaltName(string name)
         {
             //Si hago la comparacion de pass en el bussiness no es necesario pasarla acá
-            var user = _context.Usuarios.Where(us => us.nombre_usuario == name).First();
+            var user = await _context.Usuarios.Where(us => us.nombre_usuario == name).FirstAsync();
             return _mapper.Map<UserSaltModel>(user);
         }
 

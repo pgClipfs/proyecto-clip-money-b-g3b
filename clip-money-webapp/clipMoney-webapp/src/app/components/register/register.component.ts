@@ -31,6 +31,11 @@ export class RegisterComponent implements OnInit {
     };
 
     const result = await this.registerService.registerUser(this.userRegister);
+
+    if(result != null)
+    {
+
+    }
   }
 
 

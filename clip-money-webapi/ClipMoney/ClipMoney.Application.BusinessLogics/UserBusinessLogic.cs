@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ClipMoney.Application.BusinessLogics
 {
@@ -26,7 +27,7 @@ namespace ClipMoney.Application.BusinessLogics
 
         //Este metodo recibe como parametros el nombre y la contraseña enviada desde el front, aqui el metodo
         //con esos dos campos generara una clave encriptada la cual serivira de acceso para el usuario
-        public UserInLoggedModel GetByUserNamePass(string name, string pass)
+        public async Task<UserInLoggedModel> GetByUserNamePass(string name, string pass)
         {
             //Creo una variable del tipo UserInLoggedModel
             var userInLogged = new UserInLoggedModel();
@@ -39,7 +40,7 @@ namespace ClipMoney.Application.BusinessLogics
                 //Si pasa la validacion llama a la funcion de la capa que se conecta con la base de datos haciendo uso de la inyeccion de dependencias
                 //alli recupera el usuario de la base de datos mediante su nombre de usuario y la
                 //guarda en la variable User, este usuario contiene el salt el cual se usa para generar el codigo hash de la contraseña
-                var User = _userRepository.GetByUserSaltName(name);
+                var User = await _userRepository.GetByUserSaltName(name);
 
 
                 //Se genera el codigo hash convinando el usuario es decir el nombre y el salt genreado al registrase, se la guarda
@@ -65,9 +66,9 @@ namespace ClipMoney.Application.BusinessLogics
                 else
                     return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return null;
             }
         }
 

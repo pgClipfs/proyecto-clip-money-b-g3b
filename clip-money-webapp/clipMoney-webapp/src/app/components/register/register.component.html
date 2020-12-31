@@ -1,28 +1,28 @@
-<!-- <div class="contenedor-registro m-5">
-  <div class="col-12 m-auto">
-      <form class="form-signin" [formGroup]="signOnForm">
-          <div class="col-12">
-              <h1 class="text-center mb-3">Registrate en ClipMoney!</h1>
-              <div class="espacio">
-          </div>
-          <div class="col-3">
-              <h1>Ingresar E-mail</h1>
-              <label for="inputEmail" class="sr-only">E-mail</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" [formControl]="signOnForm.controls.name" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
-         </div>
+<div class="contenedor-registro m-5">
+    <div class="col-12 m-auto">
+        <form class="form-signin" [formGroup]="signInForm">
+            <div class="col-12 mx-auto">
+                <h1 class="text-center mb-5">Registrate en ClipMoney!</h1>
+                <div class="espacio">
+                </div>
+                <div class="col-3 mx-auto">
+                    <h5>Ingresar E-mail</h5>
+                    <label for="inputEmail" class="sr-only">E-mail</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" [formControl]="signInForm.controls.name" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                </div>
 
-          <div class="col-3">
-              <label class="" for="password"><h1>Contraseña</h1></label>
-              <input type="password" class="form-control" [formControl]="signInForm.controls.password" placeholder="Ingrese su contraseña">
-          </div>
+                <div class="col-3 mx-auto mt-3">
+                    <label class="mb-0" for="password"><h5>Contraseña</h5></label>
+                    <input type="password" class="form-control" [formControl]="signInForm.controls.password" placeholder="Ingrese su contraseña">
+                </div>
 
-          <div class="col-12">
-              <button type="button" class="btn btn-primary form-control w-25 mt-3" (click)="signIn()">Aceptar</button>
-          </div>
-          </div>
-      </form>
-      <div class="col-12">
-          <a href="../login/login.component.html">¿Ya tenés una cuenta? ¡Inicia sesión acá!</a>
-      </div>
+                <div class="col-5 mx-auto my-5 text-center">
+                    <button type="button" class="btn btn-primary form-control w-25 mt-3" (click)="signIn()">Aceptar</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-12 mx-auto text-center mt-3">
+            <a href="../login/login.component.html">¿Ya tenés una cuenta? ¡Inicia sesión acá!</a>
+        </div>
     </div>
-  </div> -->
+</div>

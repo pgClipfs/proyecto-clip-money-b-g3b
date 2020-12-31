@@ -1,7 +1,9 @@
+import { AlertService } from './../../services/alert.service';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserSignOnModel } from 'src/app/models/userSignOn.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,10 @@ export class LoginComponent implements OnInit {
   signOnForm: FormGroup;
   userLogin: UserSignOnModel;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService){ }
+  constructor(private formBuilder: FormBuilder,
+              private loginService: LoginService,
+              private alertService: AlertService,
+              private router: Router){ }
 
   ngOnInit(): void {
     this.signOnForm = this.formBuilder.group({
@@ -28,22 +33,19 @@ export class LoginComponent implements OnInit {
       NombreUsuario: this.signOnForm.value.name,
       Password: this.signOnForm.value.password
     };
-    try {
       const result = await this.loginService.loginUser(this.userLogin);
+      console.log(result);
 
-      if(result)
+      if(result.Token != null)
       {
-        console.log("Usuario Logueado!!!");
+        this.loginService.setCurrentUser(result.Token)
+        this.router.navigateByUrl('/home');
       }
 
       else{
-        console.log("Ha ocurrido un error");
-        return;
+        this.alertService.alertError("Ha ocurrido un error al intentar loguearse");
       }
 
-    } catch (error) {
-      console.warn(error);
-    }
   }
 
 }
