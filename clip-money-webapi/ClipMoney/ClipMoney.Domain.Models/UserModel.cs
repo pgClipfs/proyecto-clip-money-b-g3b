@@ -14,5 +14,6 @@ namespace ClipMoney.Domain.Models
         public int Estado { get; set; }
         public string NombrePersona { get; set; }
         public string ApellidoPersona { get; set; }
+        public int idCuenta { get; set; }
     }
 }
