@@ -1,8 +1,16 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+
 namespace ClipMoney.Persistence.EntityFramework.entities
 {
     public partial class Usuarios
     {
+        public Usuarios()
+        {
+            transaction = new HashSet<transaction>();
+            wallet = new HashSet<wallet>();
+        }
+
         public int id { get; set; }
         public string nombre_usuario { get; set; }
         public string password { get; set; }
@@ -11,5 +19,8 @@ namespace ClipMoney.Persistence.EntityFramework.entities
         public string foto_frente { get; set; }
         public string foto_dorso { get; set; }
         public int? estado { get; set; }
+
+        public virtual ICollection<transaction> transaction { get; set; }
+        public virtual ICollection<wallet> wallet { get; set; }
     }
 }

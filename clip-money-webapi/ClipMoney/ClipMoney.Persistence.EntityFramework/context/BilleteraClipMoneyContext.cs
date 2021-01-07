@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using ClipMoney.Persistence.EntityFramework.entities;
 
 namespace ClipMoney.Persistence.EntityFramework.context
@@ -15,13 +17,16 @@ namespace ClipMoney.Persistence.EntityFramework.context
         }
 
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<transaction> transaction { get; set; }
+        public virtual DbSet<transaction_type> transaction_type { get; set; }
+        public virtual DbSet<wallet> wallet { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=BilleteraClipMoney;User=GastonFavre;Password=clip123;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=BilleteraClipMoney;User=GastonFavre;Password=jagger33;Trusted_Connection=True;");
             }
         }
 
@@ -52,6 +57,35 @@ namespace ClipMoney.Persistence.EntityFramework.context
                 entity.Property(e => e.salt)
                     .HasMaxLength(100)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<transaction>(entity =>
+            {
+                entity.HasOne(d => d.id_userNavigation)
+                    .WithMany(p => p.transaction)
+                    .HasForeignKey(d => d.id_user)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_transaction_id_user");
+
+                entity.HasOne(d => d.transaction_typeNavigation)
+                    .WithMany(p => p.transaction)
+                    .HasForeignKey(d => d.transaction_type)
+                    .HasConstraintName("FK_transaction_transaction_type");
+            });
+
+            modelBuilder.Entity<transaction_type>(entity =>
+            {
+                entity.Property(e => e.description)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<wallet>(entity =>
+            {
+                entity.HasOne(d => d.id_userNavigation)
+                    .WithMany(p => p.wallet)
+                    .HasForeignKey(d => d.id_user)
+                    .HasConstraintName("FK_wallet_user_id");
             });
 
             OnModelCreatingPartial(modelBuilder);
