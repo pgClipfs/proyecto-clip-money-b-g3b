@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       name: new FormControl(null, [Validators.required]),
       surname: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
-      passwordRepeat: new FormControl(null, [Validators.required])
+      passwordrepeat: new FormControl(null, [Validators.required])
 
     });
   }
@@ -30,13 +30,17 @@ export class RegisterComponent implements OnInit {
 
     this.userRegister = {
       Nombre: this.signInForm.value.name,
-      Contraseña: this.signInForm.value.password
+      Apellido: this.signInForm.value.surname, 
+      Contraseña: this.signInForm.value.password,
+      Recontraseña: this.signInForm.value.passwordrepeat,
     };
 
     const result = await this.registerService.registerUser(this.userRegister);
 
     if(result != null)
     {
+      var success="Exito en envío de datos";
+      console.log(success)
 
     }
   }
