@@ -1,19 +1,36 @@
-<div class="contenedor-registro m-5">
-    <div class="col-12 m-auto">
+<link rel="stylesheet" href="register.component.scss" />
+
+<body>
+
+    
+<div class="jumbotron" style="background-color: rgba(173, 183, 211, 0.637)); opacity: 0.85;">
+    <div class="col-12-m-auto">
         <form class="form-signin" [formGroup]="signInForm">
             <div class="col-12 mx-auto">
                 <h1 class="text-center mb-5">Registrate en ClipMoney!</h1>
                 <div class="espacio">
                 </div>
-                <div class="col-3 mx-auto">
+                <div class="col-3 mx-auto  mt-3">
                     <h5>Ingresar E-mail</h5>
                     <label for="inputEmail" class="sr-only">E-mail</label>
                     <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" [formControl]="signInForm.controls.name" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                </div>
+                <div class="col-3 mx-auto  mt-3">
+                    <label class="mb-0" for="name"><h5>Nombre</h5></label>
+                    <input type="name" class="form-control" [formControl]="signInForm.controls.name" placeholder="Nombre">
+                </div>
+                <div class="col-3 mx-auto  mt-3">
+                    <label class="mb-0" for="surname"><h5>Apellido</h5></label>
+                    <input type="name" class="form-control" [formControl]="signInForm.controls.surname" placeholder="Apellido">
                 </div>
 
                 <div class="col-3 mx-auto mt-3">
                     <label class="mb-0" for="password"><h5>Contraseña</h5></label>
                     <input type="password" class="form-control" [formControl]="signInForm.controls.password" placeholder="Ingrese su contraseña">
+                </div>
+                <div class="col-3 mx-auto mt-3">
+                    <label class="mb-0" for="password"><h5>Reingrese contraseña</h5></label>
+                    <input type="password" class="form-control" [formControl]="signInForm.controls.password" placeholder="Reingrese su contraseña">
                 </div>
 
                 <div class="col-5 mx-auto my-5 text-center">
@@ -26,3 +43,5 @@
         </div>
     </div>
 </div>
+
+</body>

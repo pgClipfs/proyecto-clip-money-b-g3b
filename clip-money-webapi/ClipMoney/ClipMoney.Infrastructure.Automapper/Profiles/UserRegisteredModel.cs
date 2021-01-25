@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ClipMoney.Domain.Models;
+
 using ClipMoney.Persistence.EntityFramework.entities;
 
 namespace ClipMoney.Infrastructure.Automapper.Profiles
