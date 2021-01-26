@@ -20,6 +20,7 @@
                             <td *ngIf="movement.Transaction_type === 2">Extracción</td>
                             <td *ngIf="movement.Transaction_type === 1002">Transferencia a terceros</td>
                             <td *ngIf="movement.Transaction_type === 1003">Transferencia de terceros</td>
+                            <td *ngIf="movement.Transaction_type === 2002">Giro al descubierto</td>
                             <td [ngClass]="{'app-debe':(movement.Transaction_type === 2),'app-haber': movement.Transaction_type === 1 || movement.Transaction_type === 1003}">{{ ((movement.Transaction_type === 1 || movement.Transaction_type === 1003) ? '' : '-') + (movement.Amount |currency) }}</td>
                         </tr>
                     </tbody>

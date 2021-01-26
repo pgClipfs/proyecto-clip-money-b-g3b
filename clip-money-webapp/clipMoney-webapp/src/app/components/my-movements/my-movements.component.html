@@ -49,24 +49,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3 mt-3">
-                            Ingrese el CBU del tercero
+                        <div *ngIf="giro && openTurn == null" class="col-3">
+                            Tiene permitido girar
                         </div>
-                        <div class="col-6">
-                            <input type="number" class="input-group form-group">
+                        <div class="col-5" *ngIf="openTurn == null">
+                            <label type="number" class="input-group form-group">{{calcularMontoGiro()}}</label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            Ingrese el monto a transferir
-                        </div>
-                        <div class="col-6">
-                            <input type="number" class="input-group form-group">
+                        <div class="col-5" *ngIf="openTurn != null">
+                            <label type="number" class="input-group form-group">Usted ya posee un giro en curso, debe saldarlo para volver a acceder al beneficio</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3">
-                            Monto permitido:
+                        <div class="col-3 mx-auto">
+                            <button *ngIf="giro" class="btn btn-primary w-100" (click)="girarAlDescubierto()">Girar</button>
                         </div>
                     </div>
                 </form>

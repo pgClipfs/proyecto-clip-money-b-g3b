@@ -36,6 +36,48 @@ namespace ClipMoney.Domain.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
+        public async Task<bool> OpenTurn(TransferModel client)
+        {
+            try
+            {
+                var trs = new transaction
+                {
+                    id_user = client.Id_user,
+                    amount = client.Amount,
+                    transaction_type = client.Transaction_type
+                };
+
+                await _context.AddAsync(trs);
+
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    var funds = await (from w in _context.wallet
+                                       where w.id_user == client.Id_user
+                                       select w).FirstOrDefaultAsync();
+                    var newAmount = funds.funds + client.Amount;
+                    funds.funds = newAmount;
+                }
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    var gd = new giro_descubierto
+                    {
+                        id_user = client.Id_user,
+                        amount = client.Amount,
+                        balance = client.Amount,
+                    };
+                    await _context.AddAsync(gd);
+                }
+                return await _context.SaveChangesAsync() > 0;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+        }
+
         //public async Task<bool> TransferFounds(TransferModel transactionNew)
         //{
         //    var trs = new transaction

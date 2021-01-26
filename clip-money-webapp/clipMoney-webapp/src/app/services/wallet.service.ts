@@ -1,6 +1,6 @@
+import { TransferModel } from './../models/transfer.model';
 import { TransferMoneyModel } from './../models/transferMoneyModel.model.ts';
 import { UserTranserModel } from './../models/UserTranser.model.ts';
-import { TransferModel } from 'src/app/models/transfer.model';
 import { Injectable } from '@angular/core';
 import {environment as env} from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -27,6 +27,10 @@ async getUserByCvu(cvuNumber: number){
 
 async transferToUser(trans: TransferMoneyModel){
   return await this.http.post<boolean>(`${env.apiUrl}/wallet/transfer/cvu`, trans).toPromise();
+}
+
+async OpenTurn(trans: TransferModel){
+  return await this.http.post<boolean>(`${env.apiUrl}/wallet/turn`, trans).toPromise();
 }
 
 }

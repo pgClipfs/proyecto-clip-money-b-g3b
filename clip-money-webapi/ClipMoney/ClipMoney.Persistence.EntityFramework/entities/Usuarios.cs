@@ -7,6 +7,7 @@ namespace ClipMoney.Persistence.EntityFramework.entities
     {
         public Usuarios()
         {
+            giro_descubierto = new HashSet<giro_descubierto>();
             transaction = new HashSet<transaction>();
             wallet = new HashSet<wallet>();
         }
@@ -20,6 +21,7 @@ namespace ClipMoney.Persistence.EntityFramework.entities
         public string foto_dorso { get; set; }
         public int? estado { get; set; }
 
+        public virtual ICollection<giro_descubierto> giro_descubierto { get; set; }
         public virtual ICollection<transaction> transaction { get; set; }
         public virtual ICollection<wallet> wallet { get; set; }
     }

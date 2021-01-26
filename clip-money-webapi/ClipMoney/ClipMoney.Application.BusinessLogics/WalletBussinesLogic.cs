@@ -70,5 +70,16 @@ namespace ClipMoney.Application.BusinessLogics
 
             return result;
         }
+
+        public async Task<bool> OpenTurn(TransferModel client)
+        {
+            if (client.Id_user <= 0)
+            {
+                return false;
+            }
+            var result = await _walletRepository.OpenTurn(client);
+
+            return result;
+        }
     }
 }

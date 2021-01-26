@@ -17,6 +17,7 @@ namespace ClipMoney.Persistence.EntityFramework.context
         }
 
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<giro_descubierto> giro_descubierto { get; set; }
         public virtual DbSet<transaction> transaction { get; set; }
         public virtual DbSet<transaction_type> transaction_type { get; set; }
         public virtual DbSet<wallet> wallet { get; set; }
@@ -57,6 +58,14 @@ namespace ClipMoney.Persistence.EntityFramework.context
                 entity.Property(e => e.salt)
                     .HasMaxLength(100)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<giro_descubierto>(entity =>
+            {
+                entity.HasOne(d => d.id_userNavigation)
+                    .WithMany(p => p.giro_descubierto)
+                    .HasForeignKey(d => d.id_user)
+                    .HasConstraintName("FK_giro_descubierto_Usuarios");
             });
 
             modelBuilder.Entity<transaction>(entity =>

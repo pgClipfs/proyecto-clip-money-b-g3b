@@ -47,5 +47,12 @@ namespace ClipMoney.API.Controllers
             var trans = await _walletBussinesLogic.TransferMoney(transfer);
             return Ok(trans);
         }
+
+        [HttpPost("turn")]
+        public async Task<IActionResult> OpenTurn(TransferModel client)
+        {
+            var trans = await _walletBussinesLogic.OpenTurn(client);
+            return Ok(trans);
+        }
     }
 }
