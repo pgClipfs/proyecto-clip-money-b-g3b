@@ -1,16 +1,10 @@
-import { MovementsService } from './../../services/movements.service';
+import { UserTokenModel } from './../../models/userTokenModel.model.ts';
+import { LoginService } from './../../services/login.service';
+import { WalletService } from './../../services/wallet.service';
+import { TransferService } from './../../services/transfer.service';
 import { Component, OnInit } from '@angular/core';
-
-
-interface Movements {
-  id: number;
-  fecha: Date;
-  monto: number;
-  TipoDeTransaccion: {
-    id: number;
-    nombre: string;
-  };
-}
+import { TransferModel } from 'src/app/models/transfer.model';
+import { TransferTypeModel } from 'src/app/models/transfertype.model';
 
 @Component({
   selector: 'app-last-movements',
@@ -19,18 +13,25 @@ interface Movements {
 })
 export class LastMovementsComponent implements OnInit {
 
-  showError = false;
+  listLastTransfers: Array<TransferModel>;
+  funds: number;
+  page = 1;
+  totalMovements: number
+  userLogged: UserTokenModel;
 
-  lastMovements: Movements[] = [];
 
-  constructor(private movemenetsService: MovementsService) { }
+  constructor(private transferService: TransferService,
+              private walletService: WalletService,
+              private loginService: LoginService) { }
 
-  ngOnInit(): void {
-    this.movemenetsService.getLastMovoments().subscribe((response) => {
-      this.showError = false;
-      this.lastMovements = response.data as Movements[];
-    }, error => {
-      this.showError = true;
-    });
+  async ngOnInit() {
+
+    this.userLogged = this.loginService.getCurrentUser()
+    this.listLastTransfers = await this.transferService.getTrasnferByUserId(parseInt(this.userLogged.Id));
+    this.totalMovements = this.listLastTransfers.length <= 0 ? 0 : this.listLastTransfers.length;
+    this.funds = await this.walletService.getFundByUserId(parseInt(this.userLogged.Id));
+
+
+    this.listLastTransfers.slice(0, 10);
   }
 }

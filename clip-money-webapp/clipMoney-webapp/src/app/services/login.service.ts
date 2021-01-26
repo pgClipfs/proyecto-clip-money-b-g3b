@@ -1,3 +1,4 @@
+import { UserTokenModel } from './../models/userTokenModel.model.ts';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {environment as env} from '../../environments/environment';
@@ -32,11 +33,14 @@ export class LoginService {
       if (token !== null){
 
         const tokenDecode = jwt_decode(token);
-        const currentUser: UserSignOnModel = {
+        const currentUser: UserTokenModel = {
           NombreUsuario: tokenDecode['user'],
-          Password: ""
+          Id: tokenDecode['userId']
         };
         return currentUser;
+      }
+      else{
+        return null
       }
     }
 

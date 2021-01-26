@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="contenedor-registro m-5">
     <div class="col-12 m-auto">
         <form class="form-signin" [formGroup]="signInForm">
@@ -22,7 +23,7 @@
             </div>
         </form>
         <div class="col-12 mx-auto text-center mt-3">
-            <a href="../login/login.component.html">¿Ya tenés una cuenta? ¡Inicia sesión acá!</a>
+            <button class="button-login" [routerLink]="['/login']">¿Ya tenés una cuenta? ¡Inicia sesión acá!</button>
         </div>
     </div>
 </div>

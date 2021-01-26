@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
               private alertService: AlertService,
               private router: Router){ }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.signOnForm = this.formBuilder.group({
       name: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required])
@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
       Password: this.signOnForm.value.password
     };
       const result = await this.loginService.loginUser(this.userLogin);
-      console.log(result);
 
       if(result.Token != null)
       {

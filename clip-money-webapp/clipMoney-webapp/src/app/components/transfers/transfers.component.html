@@ -1,1 +1,21 @@
-<p>transfers works!</p>
+<app-navbar></app-navbar>
+<main class="form-signin">
+    <form [formGroup]="formTransaction">
+        <div class="col-12 mx-auto text-center mt-2">
+            <img class="mb-4 mx-auto" src="../../../assets/images/bcoin.png" width="100" height="100">
+        </div>
+        <h1 class="h3 mb-3 fw-normal text-center my-5">Mi billetera virtual</h1>
+        <div class="row">
+            <div class="col-8 text-center mx-auto mb-4">
+                <label for="inputEmail" class="visually-hidden">Ingrese un monto</label>
+                <div class="col-6 mx-auto">
+                    <input [formControl]="formTransaction.controls.Amount" type="text" id="inputMonto" class="form-control" placeholder="" required autofocus>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5 mx-auto text-center">
+            <div class="col-4 text-center ml-auto"><button class="w-50 btn btn-lg btn-primary" type="submit" (click)="ingresarDinero()">Ingresar</button></div>
+            <div class="col-4 text-center mr-auto"><button class="w-50 btn btn-lg btn-primary" type="submit" (click)="extraerDinero()">Extraer</button></div>
+        </div>
+    </form>
+</main>

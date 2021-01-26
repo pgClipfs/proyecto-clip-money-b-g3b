@@ -41,5 +41,34 @@ namespace ClipMoney.Application.BusinessLogics
 
             return result;
         }
+
+        public async Task<UserTransferModel> GetUserByCvu(long cvu)
+        {
+            try
+            {
+                if (cvu <= 0)
+                {
+                    return null;
+                }
+                var result = await _walletRepository.GetUserByCvu(cvu);
+                return result;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+        public async Task<bool> TransferMoney(TransferMoneyModel transfer)
+        {
+            if (transfer.Cvu <= 0)
+            {
+                return false;
+            }
+            var result = await _walletRepository.TransferMoney(transfer);
+
+            return result;
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace ClipMoney.Persistence.EntityFramework.entities
         public int id { get; set; }
         public int? id_user { get; set; }
         public double? funds { get; set; }
+        public long? cvu_count { get; set; }
 
         public virtual Usuarios id_userNavigation { get; set; }
     }

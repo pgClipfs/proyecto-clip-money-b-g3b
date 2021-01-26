@@ -1,20 +1,24 @@
-
-.app-head, .app-label {
-  background-color: rgba(163, 166, 177, 0.603);
+.app-head,
+.app-label {
+    background-color: rgba(163, 166, 177, 0.603);
 }
 
 .app-debe {
-  color: red;
+    color: red;
 }
 
 .app-haber {
-  color: green;
+    color: green;
 }
 
 .form-select {
-  border-radius: 2rem;
+    border-radius: 2rem;
 }
 
 table {
-  background-color: white;
+    background-color: white;
+}
+
+.saldo {
+    padding-left: 3rem;
 }

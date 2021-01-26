@@ -1,36 +1,39 @@
+<app-navbar></app-navbar>
+<div class="container-fluid px-0">
+    <img src="../../../assets/images/cyber-securtiy-banner.jpg" class="img-fluid" alt="">
+</div>
 <div class="container">
-
-  <h3 class="mt-2">Ultimos Movimientos</h3>
-
-  <div class="ml-4 mb-4">
-    <div class="input-group" *ngIf="lastMovements.length > 0">
-      <button type="button" class="btn btn-success ml-4 mr-2">Mostrar por moneda</button>
-      <select class="form-select">
-        <option selected>Pesos Argentinos ($)</option>
-      </select>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mt-2 text-center">Ultimos Movimientos</h3>
+            <div class="mr-5 ml-5 mt-5">
+                <table class="table table-striped">
+                    <thead class="app-head">
+                        <tr>
+                            <th scope="col">Tipo de movimiento</th>
+                            <th scope="col">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let movement of listLastTransfers | slice: (page - 1) * 10: page * 10">
+                            <td *ngIf="movement.Transaction_type === 1">Deposito</td>
+                            <td *ngIf="movement.Transaction_type === 2">Extracción</td>
+                            <td *ngIf="movement.Transaction_type === 1002">Transferencia a terceros</td>
+                            <td *ngIf="movement.Transaction_type === 1003">Transferencia de terceros</td>
+                            <td [ngClass]="{'app-debe':(movement.Transaction_type === 2),'app-haber': movement.Transaction_type === 1 || movement.Transaction_type === 1003}">{{ ((movement.Transaction_type === 1 || movement.Transaction_type === 1003) ? '' : '-') + (movement.Amount |currency) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-between p-2">
+                    <ngb-pagination [collectionSize]="totalMovements" [(page)]="page" [pageSize]="10">
+                    </ngb-pagination>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="mr-5 ml-5 mt-2" *ngIf="lastMovements.length > 0">
-    <table class="table table-striped">
-      <thead class="app-head">
-        <tr>
-          <th scope="col">Fecha</th>
-          <th scope="col">Tipo de movimiento</th>
-          <th scope="col">Monto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let movement of lastMovements">
-          <th scope="row">{{movement.fecha | date:'shortDate'}}</th>
-          <td>{{movement.TipoDeTransaccion.nombre}}</td>
-          <td [ngClass]="{'app-debe':(movement.TipoDeTransaccion.id == 1 || movement.TipoDeTransaccion.id == 3),'app-haber': movement.TipoDeTransaccion.id == 2}">{{  ((movement.TipoDeTransaccion.id == 1 || movement.TipoDeTransaccion.id == 3) ? '-' : '') + (movement.monto |currency) }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="alert alert-danger mt-5" *ngIf="showError" role="alert">
-    Se produjo un error al conectar con la  con nuestros servidores, por favor intentelo de nuevo mas tarde.
-  </div>
+    <div class="row">
+        <div class="col-6">
+            <p class="saldo">Saldo: ${{funds}}</p>
+        </div>
+    </div>
 </div>

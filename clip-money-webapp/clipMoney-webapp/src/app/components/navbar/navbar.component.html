@@ -9,17 +9,23 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['/home']" aria-current="page">Inicio</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
+                <li *ngIf="user !== null" class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['/lastMovements']" aria-current="page">Ultimos Movimientos</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['/transfers']" aria-current="page">Transferencias</a>
+                <li *ngIf="user !== null" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/transfers']" aria-current="page">Mi cuenta</a>
+                </li>
+                <li *ngIf="user !== null" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/myMovements']" aria-current="page">Transferencias</a>
+                </li>
+                <li *ngIf="user !== null" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" aria-current="page" (click)="logout()">Cerrar Sesión</a>
                 </li>
             </ul>
             <div class="navbar-nav ml-auto">
-                <button *ngIf="user === null" class="btn btn-success mr-2" type="button">Iniciar Sesión</button>
+                <button *ngIf="user === null" class="btn btn-success mr-2" type="button" [routerLink]="['/login']">Iniciar Sesión</button>
                 <label *ngIf="user !== null" class="mb-0">¡Bienvenido {{user.NombreUsuario}}!</label>
-                <button *ngIf="user === null" class="btn btn-success" type="button">Registrarme</button>
+                <button *ngIf="user === null" class="btn btn-success" type="button" [routerLink]="['/register']">Registrarme</button>
             </div>
         </div>
     </div>

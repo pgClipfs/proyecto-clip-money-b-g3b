@@ -83,7 +83,8 @@ namespace ClipMoney.Application.BusinessLogics
             var Claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.NameId, usuario.NombreUsuario),
-                new Claim("user", usuario.NombreUsuario)
+                new Claim("user", usuario.NombreUsuario),
+                new Claim("userId", usuario.Id.ToString())
             };
 
             JwtSecurityToken token = new JwtSecurityToken(

@@ -4,11 +4,12 @@ using System.Text;
 
 namespace ClipMoney.Domain.Models
 {
-    public class UserInLoggedModel
+    public class UserTransferModel
     {
         public string NombreUsuario { get; set; }
-        public string Estado { get; set; }
-        public int Id { get; set; }
-        public string Token { get; set; }
+        public long? Cvu { get; set; }
+        public string CountOwner { get; set; }
+
+
     }
 }

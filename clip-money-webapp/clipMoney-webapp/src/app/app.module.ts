@@ -1,3 +1,4 @@
+import { MyMovementsComponent } from './components/my-movements/my-movements.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +12,7 @@ import { LastMovementsComponent } from './components/last-movements/last-movemen
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TransfersComponent } from './components/transfers/transfers.component';
 import { HomeComponent } from './components/home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { HomeComponent } from './components/home/home.component';
     LastMovementsComponent,
     NavbarComponent,
     TransfersComponent,
-    HomeComponent
+    HomeComponent,
+    MyMovementsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

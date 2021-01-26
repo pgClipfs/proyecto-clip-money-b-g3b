@@ -1,3 +1,4 @@
+import { MyMovementsComponent } from './components/my-movements/my-movements.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'transfers', component: TransfersComponent},
   {path: 'lastMovements', component: LastMovementsComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'myMovements', component: MyMovementsComponent}
 ];
 
 @NgModule({

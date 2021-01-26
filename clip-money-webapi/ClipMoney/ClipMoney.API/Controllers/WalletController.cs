@@ -33,5 +33,19 @@ namespace ClipMoney.API.Controllers
             var funds = await _walletBussinesLogic.GetFundsByUserId(userId);
             return Ok(funds);
         }
+
+        [HttpGet("cvu/{numberCvu}")]
+        public async Task<IActionResult> GetUserByCvu(long numberCvu)
+        {
+            var user = await _walletBussinesLogic.GetUserByCvu(numberCvu);
+            return Ok(user);
+        }
+
+        [HttpPost("transfer/cvu")]
+        public async Task<IActionResult> TransferMoney(TransferMoneyModel transfer)
+        {
+            var trans = await _walletBussinesLogic.TransferMoney(transfer);
+            return Ok(trans);
+        }
     }
 }

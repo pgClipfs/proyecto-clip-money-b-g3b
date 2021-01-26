@@ -1,6 +1,8 @@
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { UserSignOnModel } from 'src/app/models/userSignOn.model';
+import { Router } from '@angular/router';
+import { UserTokenModel } from 'src/app/models/userTokenModel.model.ts';
 
 @Component({
   selector: 'app-navbar',
@@ -9,12 +11,21 @@ import { UserSignOnModel } from 'src/app/models/userSignOn.model';
 })
 export class NavbarComponent implements OnInit {
 
-  user: UserSignOnModel;
+  user: UserTokenModel;
+  logged = false;
+  constructor(private userLoginService: LoginService,
+              private router: Router) { }
 
-  constructor(private userLoginService: LoginService) { }
+  async ngOnInit() {
 
-  ngOnInit(): void {
     this.user = this.userLoginService.getCurrentUser();
   }
 
-}
+  logout(){
+      localStorage.removeItem('currentUser');
+      this.router.navigate(['login']);
+      this.logged = false;
+      this.ngOnInit();
+    }
+
+    }

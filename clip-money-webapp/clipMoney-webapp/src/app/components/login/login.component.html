@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container">
     <form class="form-signin" [formGroup]="signOnForm">
         <div class="col-12 m-auto text-center">
@@ -12,7 +13,7 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="loginUser()">Iniciar sesion</button>
     </form>
-    <div class="col-12">
-        <a href="/register">¿No tenes cuenta? Registrate aca!</a>
+    <div class="col-12 text-center">
+        <a class="text-center" href="/register">¿No tenes cuenta? Registrate aca!</a>
     </div>
 </div>
